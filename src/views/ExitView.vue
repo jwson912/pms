@@ -14,8 +14,9 @@ const exitNotice = ref('')
 const coupons = [
   { code: '', label: '쿠폰 미적용', type: 'fixed', value: 0 },
   { code: 'WELCOME10', label: 'WELCOME10 · 10% 할인', type: 'percent', value: 10 },
-  { code: 'PARK1000', label: 'PARK1000 · 1,000원 할인', type: 'fixed', value: 1000 },
-  { code: 'FREE30', label: 'FREE30 · 30분 무료권', type: 'minutes', value: 30 },
+  { code: 'ECO50', label: '친환경차 50% 할인', type: 'percent', value: 50 },
+  { code: 'FREE30', label: '30분 무료권', type: 'minutes', value: 30 },
+  { code: 'FREE60', label: '60분 무료권', type: 'minutes', value: 60 },
 ]
 
 const preview = computed(() => {
@@ -25,7 +26,7 @@ const preview = computed(() => {
   const coupon = coupons.find((item) => item.code === couponCode.value) || coupons[0]
   let discountAmount = 0
   if (coupon.type === 'percent') discountAmount = Math.floor(fee * (coupon.value / 100))
-  if (coupon.type === 'fixed') discountAmount = coupon.value
+  //if (coupon.type === 'fixed') discountAmount = coupon.value
   if (coupon.type === 'minutes') {
     const discountedMinutes = Math.max(0, minutes - coupon.value)
     discountAmount = fee - calculateFee(discountedMinutes, parking.settings)
