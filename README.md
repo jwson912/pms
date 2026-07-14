@@ -21,7 +21,7 @@ npm run dev
 - 출차: 주차 시간과 요금 자동 계산
 - 현황: 차량 번호·상태 검색, 실시간 주차 시간 표시, 기록 삭제
 - 설정: 수용량 및 요금 정책 변경
-- 회원가입/로그인: 아이디 기반 계정 정보를 브라우저 `localStorage`에 저장
+- 회원가입/로그인: 아이디 기반 계정 정보를 브라우저 `localStorage`의 `parking.user.profiles` 키에 저장
 - 공지사항: 사용자/관리자 공통 접근 게시판
 - 사용자 관리: 관리자 전용 사용자 목록/권한/삭제 관리
 - 내정보: 내 계정으로 등록된 입차 차량과 차량번호판 이미지 표시
@@ -36,4 +36,4 @@ npm run dev
 - 주차 기록: `parking.records`
 - 요금/수용량 설정: `parking.settings`
 - 현재 로그인 세션: `parking.admin.session`
-- 사용자 목록/권한: `parking.user.profiles`
+- 사용자 목록/권한/회원가입 계정: `parking.user.profiles`

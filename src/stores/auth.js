@@ -51,6 +51,16 @@ function writeLocalProfiles(profiles) {
   localStorage.setItem(USER_PROFILES_KEY, JSON.stringify(profiles))
 }
 
+function verifyStoredProfiles(expectedProfiles) {
+  const storedProfiles = readLocalProfiles().map(normalizeProfile)
+  const storedIds = new Set(storedProfiles.map((profile) => profile.userId))
+  const missing = expectedProfiles.find((profile) => !storedIds.has(profile.userId))
+  if (missing) {
+    throw new Error(`${USER_PROFILES_KEY}에 사용자 정보를 저장하지 못했습니다.`)
+  }
+  return storedProfiles
+}
+
 function normalizeProfile(profile) {
   const legacyEmail = profile.legacyEmail || profile.email || ''
   const userId = normalizeUserId(profile.userId || (legacyEmail ? userIdFromEmail(legacyEmail) : profile.id))
@@ -63,7 +73,7 @@ function normalizeProfile(profile) {
     createdAt: profile.createdAt || new Date().toISOString(),
     updatedAt: profile.updatedAt || new Date().toISOString(),
     lastSignInAt: profile.lastSignInAt || null,
-    provider: 'localStorage',
+    provider: USER_PROFILES_KEY,
   }
 }
 
@@ -127,7 +137,7 @@ function validateSession(session) {
 function saveProfiles(profiles) {
   const normalized = profiles.map(normalizeProfile)
   writeLocalProfiles(normalized)
-  return normalized
+  return verifyStoredProfiles(normalized)
 }
 
 export const useAuthStore = defineStore('auth', {
@@ -192,11 +202,12 @@ export const useAuthStore = defineStore('auth', {
           createdAt: now,
           updatedAt: now,
           lastSignInAt: now,
-          provider: 'localStorage',
+          provider: USER_PROFILES_KEY,
         }
         profiles.push(profile)
         this.profiles = saveProfiles(profiles)
-        this.user = toStoredUser(profile)
+        const storedProfile = this.profiles.find((item) => item.userId === normalizedUserId)
+        this.user = toStoredUser(storedProfile)
         localStorage.setItem(SESSION_KEY, JSON.stringify(this.user))
         return { ok: true, needsConfirmation: false }
       } catch (error) {
