@@ -20,7 +20,7 @@ const routes = [
     meta: { requiresAuth: true },
     children: [
       { path: 'dashboard', name: 'dashboard', component: DashboardView, meta: { requiresAdmin: true } },
-      { path: 'entry', name: 'entry', component: EntryView, meta: { requiresAdmin: true } },
+      { path: 'entry', name: 'entry', component: EntryView },
       { path: 'exit', name: 'exit', component: ExitView },
       { path: 'parking', name: 'parking', component: ParkingListView, meta: { requiresAdmin: true } },
       { path: 'notices', name: 'notices', component: NoticesView },

@@ -1,7 +1,9 @@
 <script setup>
 import { reactive, ref } from 'vue'
+import { useAuthStore } from '../stores/auth'
 import { useParkingStore } from '../stores/parking'
 
+const auth = useAuthStore()
 const parking = useParkingStore()
 const message = ref('')
 const error = ref('')
@@ -11,10 +13,11 @@ async function submit() {
   message.value = ''
   error.value = ''
   try {
-    const record = await parking.addEntry(form)
+    const ownerId = auth.isAdmin ? form.owner_id : auth.user?.userId || auth.user?.id || ''
+    const record = await parking.addEntry({ ...form, owner_id: ownerId })
     message.value = `${record.car_number} 차량의 입차 등록이 완료되었습니다.`
     form.car_number = ''
-    form.owner_id = ''
+    if (auth.isAdmin) form.owner_id = ''
     form.memo = ''
   } catch (e) {
     error.value = e.message
@@ -36,8 +39,11 @@ async function submit() {
       <select v-model="form.parking_zone">
         <option>A구역</option><option>B구역</option><option>C구역</option>
       </select>
-      <label>소유자 아이디</label>
-      <input v-model.trim="form.owner_id" placeholder="예: jw85.son" />
+      <template v-if="auth.isAdmin">
+        <label>소유자 아이디</label>
+        <input v-model.trim="form.owner_id" placeholder="예: jw85.son" />
+      </template>
+      <p v-else class="muted">일반 사용자는 로그인 아이디 {{ auth.user?.userId }}로 입차 등록됩니다.</p>
       <label>메모</label>
       <input v-model.trim="form.memo" placeholder="선택 입력" />
       <p v-if="message" class="success">{{ message }}</p>

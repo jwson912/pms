@@ -22,7 +22,7 @@ async function logout() {
       <div class="brand">PARKING MVP</div>
       <nav class="nav">
         <RouterLink v-if="auth.isAdmin" to="/admin/dashboard">대시보드</RouterLink>
-        <RouterLink v-if="auth.isAdmin" to="/admin/entry">입차 등록</RouterLink>
+        <RouterLink to="/admin/entry">입차 등록</RouterLink>
         <RouterLink to="/admin/exit">출차 처리</RouterLink>
         <RouterLink v-if="auth.isAdmin" to="/admin/parking">주차 현황</RouterLink>
         <RouterLink to="/admin/notices">공지사항</RouterLink>
