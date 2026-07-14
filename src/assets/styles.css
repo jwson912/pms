@@ -174,7 +174,7 @@ th { color: #6b7280; font-size: 13px; }
   bottom: 17.4%;
   width: auto;
   height: auto;
-  font-size: clamp(18px, 2.72vw, 31px);
+  font-size: clamp(20px, 3.05vw, 35px);
   font-weight: 720;
   letter-spacing: .018em;
   word-spacing: 0;
@@ -182,7 +182,7 @@ th { color: #6b7280; font-size: 13px; }
   font-family: 'Noto Sans KR', 'Arial', 'Helvetica Neue', Inter, Pretendard, sans-serif;
   line-height: 1;
   white-space: nowrap;
-  transform: translateY(18%) scaleX(.98) scaleY(1.02);
+  transform: translateY(3%) scaleX(.98) scaleY(1.02);
   text-shadow:
     0 .4px 0 rgba(255,255,255,.16),
     0 .4px .6px rgba(2,6,23,.16);
