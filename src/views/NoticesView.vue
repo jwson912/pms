@@ -5,6 +5,18 @@ import { formatDateTime } from '../utils/fee'
 
 const NOTICE_KEY = 'parking.notices'
 const PAGE_SIZE = 10
+const DEFAULT_NOTICE_ID = 'default-notice'
+const DEFAULT_NOTICE = {
+  id: DEFAULT_NOTICE_ID,
+  title: '공지사항입니다.',
+  content: '공지사항 내용을 확인해주세요.',
+  authorId: 'admin',
+  createdAt: '2026-07-15T00:00:00+09:00',
+  updatedAt: '2026-07-15T00:00:00+09:00',
+  views: 0,
+  comments: [],
+  isDefault: true,
+}
 
 const auth = useAuthStore()
 const notices = ref(readNotices())
@@ -23,16 +35,44 @@ const replyError = ref('')
 function readNotices() {
   try {
     const value = JSON.parse(localStorage.getItem(NOTICE_KEY) || '[]')
-    return Array.isArray(value) ? value : []
+    const normalized = normalizeNotices(Array.isArray(value) ? value : [])
+    if (JSON.stringify(value) !== JSON.stringify(normalized)) {
+      localStorage.setItem(NOTICE_KEY, JSON.stringify(normalized))
+    }
+    return normalized
   } catch {
     localStorage.removeItem(NOTICE_KEY)
-    return []
+    const normalized = normalizeNotices([])
+    localStorage.setItem(NOTICE_KEY, JSON.stringify(normalized))
+    return normalized
   }
 }
 
 function writeNotices(next) {
-  localStorage.setItem(NOTICE_KEY, JSON.stringify(next))
-  notices.value = next
+  const normalized = normalizeNotices(next)
+  localStorage.setItem(NOTICE_KEY, JSON.stringify(normalized))
+  notices.value = normalized
+}
+
+function normalizeNotices(next) {
+  const list = Array.isArray(next) ? next : []
+  const defaultNotice = list.find((notice) => notice.id === DEFAULT_NOTICE_ID)
+  const preservedDefault = defaultNotice
+    ? {
+        ...DEFAULT_NOTICE,
+        views: Number(defaultNotice.views || 0),
+        comments: Array.isArray(defaultNotice.comments) ? defaultNotice.comments : [],
+      }
+    : DEFAULT_NOTICE
+
+  return [
+    preservedDefault,
+    ...list.filter((notice) => notice.id !== DEFAULT_NOTICE_ID),
+  ]
+}
+
+function isDefaultNotice(notice) {
+  return notice?.id === DEFAULT_NOTICE_ID
 }
 
 const sortedNotices = computed(() => [...notices.value].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)))
@@ -292,7 +332,7 @@ function cancelReply() {
         </button>
       </div>
       <div v-else-if="mode === 'detail'" class="header-actions">
-        <button v-if="auth.isAdmin" class="btn btn-primary small" type="button" @click="showEdit">
+        <button v-if="auth.isAdmin && !isDefaultNotice(openedNotice)" class="btn btn-primary small" type="button" @click="showEdit">
           수정
         </button>
         <button class="btn btn-light small" type="button" @click="showList">목록</button>
@@ -328,7 +368,13 @@ function cancelReply() {
           <tbody>
             <tr v-for="(notice, index) in pagedNotices" :key="notice.id">
               <td v-if="auth.isAdmin">
-                <input v-model="selectedIds" type="checkbox" :value="notice.id" />
+                <input
+                  v-model="selectedIds"
+                  type="checkbox"
+                  :value="notice.id"
+                  :disabled="isDefaultNotice(notice)"
+                  :title="isDefaultNotice(notice) ? '기본 공지사항은 삭제할 수 없습니다.' : ''"
+                />
               </td>
               <td>{{ sortedNotices.length - ((page - 1) * PAGE_SIZE + index) }}</td>
               <td>
