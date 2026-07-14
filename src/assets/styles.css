@@ -103,56 +103,41 @@ th { color: #6b7280; font-size: 13px; }
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: 18px;
-  background: url('/plate-car-front.png') center / cover no-repeat;
+  background: url('/plate-car-front-white.svg') center / cover no-repeat;
   box-shadow: 0 18px 34px rgba(15,23,42,.2);
 }
 .plate-photo-image::before {
-  content: '';
-  position: absolute;
-  left: 27.7%;
-  top: 37.8%;
-  width: 44.3%;
-  height: 27%;
-  transform: perspective(720px) rotateY(5.5deg) rotateZ(7.6deg) skewX(.4deg);
-  transform-origin: left center;
-  border-radius: 5px;
-  background:
-    linear-gradient(180deg, rgba(237,240,240,.98), rgba(185,192,191,.92) 48%, rgba(35,43,45,.96) 100%);
-  box-shadow:
-    inset 0 2px 4px rgba(255,255,255,.36),
-    inset 0 -6px 10px rgba(2,6,23,.34),
-    0 5px 9px rgba(2,6,23,.24);
-  z-index: 1;
+  content: none;
 }
 .plate-photo-image::after {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(2,6,23,.08), transparent 38%, rgba(255,255,255,.06)),
-    radial-gradient(circle at 45% 52%, transparent 0 23%, rgba(2,6,23,.08) 48%, rgba(2,6,23,.18) 100%);
+    linear-gradient(180deg, rgba(255,255,255,.16), transparent 34%, rgba(2,6,23,.08)),
+    radial-gradient(circle at 50% 51%, transparent 0 33%, rgba(2,6,23,.08) 68%, rgba(2,6,23,.16) 100%);
   pointer-events: none;
   z-index: 3;
 }
 .plate-photo-number {
   position: absolute;
-  left: 28.2%;
-  top: 38.2%;
-  width: 43.6%;
-  height: 23.2%;
-  transform: perspective(720px) rotateY(5.5deg) rotateZ(7.6deg) skewX(.4deg);
-  transform-origin: left center;
+  left: 29.5%;
+  top: 40.8%;
+  width: 41%;
+  height: 19.8%;
+  transform: none;
+  transform-origin: center;
   border: 0;
-  border-radius: 4px;
+  border-radius: 5px;
   background: url('/korean-license-plate.png') center / 100% 100% no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1px;
-  padding: 2.1% 5.4% 2.4% 18.5%;
+  padding: 1.6% 5.1% 2% 17.2%;
   box-shadow:
-    0 7px 12px rgba(2,6,23,.26),
-    0 2px 3px rgba(2,6,23,.28);
+    0 6px 10px rgba(2,6,23,.28),
+    0 1px 2px rgba(2,6,23,.34);
   z-index: 2;
   mix-blend-mode: normal;
   overflow: hidden;
@@ -189,15 +174,15 @@ th { color: #6b7280; font-size: 13px; }
 .plate-photo-number span {
   display: inline-grid;
   place-items: center;
-  min-width: 10px;
+  min-width: 9px;
   height: 90%;
-  font-size: clamp(16px, 2.35vw, 27px);
+  font-size: clamp(15px, 2.18vw, 25px);
   font-weight: 900;
-  letter-spacing: -.08em;
+  letter-spacing: -.075em;
   color: #05070a;
   font-family: 'Arial Narrow', 'Roboto Condensed', Inter, Pretendard, sans-serif;
   line-height: 1;
-  transform: scaleX(.9) scaleY(1.18);
+  transform: scaleX(.92) scaleY(1.12);
   text-shadow:
     0 .6px 0 rgba(255,255,255,.18),
     0 1px 1px rgba(2,6,23,.22);
