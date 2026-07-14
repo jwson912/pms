@@ -15,8 +15,10 @@ const myActiveCars = computed(() => {
   ))
 })
 
-function plateLetters(carNumber) {
-  return String(carNumber || '').replace(/\s+/g, '').split('')
+function plateText(carNumber) {
+  return String(carNumber || '')
+    .replace(/\s+/g, '')
+    .replace(/([가-힣])(?=.)/, '$1 ')
 }
 
 function minutesFor(record) {
@@ -50,7 +52,7 @@ function feeFor(record) {
       <article v-for="record in myActiveCars" :key="record.id" class="panel my-car-card">
         <div class="plate-photo-image" aria-label="자동차 앞범퍼와 차량번호판 이미지">
           <div class="plate-photo-number">
-            <span v-for="(letter, index) in plateLetters(record.car_number)" :key="index">{{ letter }}</span>
+            <span class="plate-photo-text">{{ plateText(record.car_number) }}</span>
           </div>
         </div>
         <div class="detail-grid">
