@@ -188,6 +188,9 @@ th { color: #6b7280; font-size: 13px; }
     0 .4px .6px rgba(2,6,23,.16);
   z-index: 4;
 }
+.plate-photo-text.is-long {
+  font-size: clamp(17px, 2.55vw, 29px);
+}
 @media (max-width: 900px) {
   .admin-shell { display: block; }
   .sidebar { width: 100%; }

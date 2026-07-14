@@ -20,6 +20,10 @@ function plateText(carNumber) {
   return String(carNumber || '').replace(/\s+/g, '')
 }
 
+function plateTextClass(carNumber) {
+  return plateText(carNumber).length >= 8 ? 'plate-photo-text is-long' : 'plate-photo-text'
+}
+
 function minutesFor(record) {
   return calculateParkingMinutes(record.entry_time)
 }
@@ -51,7 +55,7 @@ function feeFor(record) {
       <article v-for="record in myActiveCars" :key="record.id" class="panel my-car-card">
         <div class="plate-photo-image" aria-label="자동차 앞범퍼와 차량번호판 이미지">
           <div class="plate-photo-number">
-            <span class="plate-photo-text">{{ plateText(platePreviewNumber) }}</span>
+            <span :class="plateTextClass(platePreviewNumber)">{{ plateText(platePreviewNumber) }}</span>
           </div>
         </div>
         <div class="detail-grid">
