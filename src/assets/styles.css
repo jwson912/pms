@@ -139,8 +139,8 @@ th { color: #6b7280; font-size: 13px; }
 .plate-photo-number::before {
   content: '';
   position: absolute;
-  left: 17.5%;
-  right: 2.7%;
+  left: calc(17.5% - 1px);
+  right: calc(2.7% - 1px);
   top: 8%;
   bottom: 17.4%;
   border-radius: 2px;
@@ -155,8 +155,8 @@ th { color: #6b7280; font-size: 13px; }
 .plate-photo-number::after {
   content: '';
   position: absolute;
-  left: 17.3%;
-  right: 2.5%;
+  left: calc(17.3% - 1px);
+  right: calc(2.5% - 1px);
   top: 7.2%;
   bottom: 16.4%;
   border-radius: 2px;
@@ -168,13 +168,13 @@ th { color: #6b7280; font-size: 13px; }
   display: inline-grid;
   place-items: center;
   position: absolute;
-  left: 17.5%;
-  right: 2.7%;
+  left: calc(17.5% - 1px);
+  right: calc(2.7% - 1px);
   top: 8%;
   bottom: 17.4%;
   width: auto;
   height: auto;
-  font-size: clamp(20px, 3.05vw, 35px);
+  font-size: clamp(19px, 2.9vw, 33px);
   font-weight: 720;
   letter-spacing: .018em;
   word-spacing: 0;
@@ -182,7 +182,7 @@ th { color: #6b7280; font-size: 13px; }
   font-family: 'Noto Sans KR', 'Arial', 'Helvetica Neue', Inter, Pretendard, sans-serif;
   line-height: 1;
   white-space: nowrap;
-  transform: translateY(3%) scaleX(.98) scaleY(1.02);
+  transform: translateY(30px) scaleX(.98) scaleY(1.02);
   text-shadow:
     0 .4px 0 rgba(255,255,255,.16),
     0 .4px .6px rgba(2,6,23,.16);
