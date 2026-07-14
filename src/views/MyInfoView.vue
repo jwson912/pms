@@ -16,9 +16,7 @@ const myActiveCars = computed(() => {
 })
 
 function plateText(carNumber) {
-  return String(carNumber || '')
-    .replace(/\s+/g, '')
-    .replace(/([가-힣])(?=.)/, '$1 ')
+  return String(carNumber || '').replace(/\s+/g, '')
 }
 
 function minutesFor(record) {

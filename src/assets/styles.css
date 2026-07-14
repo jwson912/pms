@@ -121,10 +121,10 @@ th { color: #6b7280; font-size: 13px; }
 }
 .plate-photo-number {
   position: absolute;
-  left: 31.05%;
-  top: 41.1%;
-  width: 38.9%;
-  height: 22%;
+  left: 31.35%;
+  top: 39.9%;
+  width: 38.2%;
+  height: 21.5%;
   transform: none;
   transform-origin: center;
   border: 0;
@@ -132,7 +132,7 @@ th { color: #6b7280; font-size: 13px; }
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 4.8% 0 16.5%;
+  padding: 0 3.7% 0 16.1%;
   box-shadow: none;
   z-index: 2;
   mix-blend-mode: normal;
@@ -141,26 +141,26 @@ th { color: #6b7280; font-size: 13px; }
 .plate-photo-number::before {
   content: '';
   position: absolute;
-  left: 16.6%;
-  right: 3.2%;
-  top: 10.5%;
-  bottom: 13.5%;
+  left: 16.1%;
+  right: 2.6%;
+  top: 8.4%;
+  bottom: 11.6%;
   border-radius: 2px;
   background:
-    linear-gradient(180deg, rgba(255,255,255,.96), rgba(242,243,238,.98) 58%, rgba(224,226,219,.96)),
-    linear-gradient(90deg, rgba(255,255,255,.8), transparent 30%, rgba(16,24,40,.04));
+    linear-gradient(180deg, rgba(236,239,234,.98), rgba(226,229,223,.98) 55%, rgba(207,211,204,.96)),
+    linear-gradient(90deg, rgba(255,255,255,.34), transparent 32%, rgba(16,24,40,.06));
   box-shadow:
-    inset 0 1px 1px rgba(255,255,255,.86),
-    inset 0 -1px 2px rgba(15,23,42,.08);
+    inset 0 1px 1px rgba(255,255,255,.45),
+    inset 0 -1px 2px rgba(15,23,42,.14);
   z-index: 1;
 }
 .plate-photo-number::after {
   content: '';
   position: absolute;
-  left: 16.3%;
-  right: 2.8%;
-  top: 9.2%;
-  bottom: 12.2%;
+  left: 15.8%;
+  right: 2.4%;
+  top: 7.4%;
+  bottom: 10.8%;
   border-radius: 2px;
   background: linear-gradient(180deg, rgba(255,255,255,.14), transparent 48%, rgba(15,23,42,.06));
   pointer-events: none;
@@ -171,15 +171,15 @@ th { color: #6b7280; font-size: 13px; }
   place-items: center;
   width: 100%;
   height: 100%;
-  font-size: clamp(18px, 2.65vw, 31px);
+  font-size: clamp(18px, 2.58vw, 30px);
   font-weight: 900;
-  letter-spacing: .045em;
-  word-spacing: .22em;
+  letter-spacing: .018em;
+  word-spacing: 0;
   color: #05070a;
   font-family: 'Arial Narrow', 'Roboto Condensed', 'Noto Sans KR', Inter, Pretendard, sans-serif;
   line-height: 1;
   white-space: nowrap;
-  transform: translateX(5.7%) translateY(-1%) scaleX(.9) scaleY(1.08);
+  transform: translateX(3.2%) translateY(1.5%) scaleX(.88) scaleY(1.05);
   text-shadow:
     0 .6px 0 rgba(255,255,255,.18),
     0 .6px .8px rgba(2,6,23,.18);
