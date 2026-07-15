@@ -6,7 +6,6 @@ import { calculateFee, calculateParkingMinutes, formatCurrency, formatDateTime }
 
 const auth = useAuthStore()
 const parking = useParkingStore()
-const platePreviewNumber = '195어3226'
 
 const myActiveCars = computed(() => {
   const userId = auth.user?.userId || auth.user?.id || ''
@@ -55,11 +54,11 @@ function feeFor(record) {
       <article v-for="record in myActiveCars" :key="record.id" class="panel my-car-card">
         <div class="plate-photo-image" aria-label="자동차 앞범퍼와 차량번호판 이미지">
           <div class="plate-photo-number">
-            <span :class="plateTextClass(platePreviewNumber)">{{ plateText(platePreviewNumber) }}</span>
+            <span :class="plateTextClass(record.car_number)">{{ plateText(record.car_number) }}</span>
           </div>
         </div>
         <div class="detail-grid">
-          <span>차량 번호</span><strong>{{ platePreviewNumber }}</strong>
+          <span>차량 번호</span><strong>{{ record.car_number }}</strong>
           <span>차종</span><strong>{{ record.car_type }}</strong>
           <span>주차 구역</span><strong>{{ record.parking_zone }}</strong>
           <span>입차 시간</span><strong>{{ formatDateTime(record.entry_time) }}</strong>
