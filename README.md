@@ -2,17 +2,6 @@
 
 Vue 3, Vite, Pinia, Vue Router로 만든 학습용 주차관리 시스템으로 별도 DB서버 없이 브라우저 `localStorage`만 사용
 
-## 배포
-- Vercel : 프론트엔드 중심 웹 서비스를 쉽게 배포·운영할 수 있게 해주는 클라우드 플랫폼
-- URL : https://jw-pms.vercel.app
-
-## 실행
-
-```bash
-npm install
-npm run dev
-```
-
 ## 주요 기능
 
 - 회원가입/로그인: 아이디 기반 계정 정보를 브라우저 `localStorage`의 `parking.user.profiles` 키에 저장
@@ -35,3 +24,14 @@ npm run dev
 - 요금/수용량 설정: `parking.settings`
 - 현재 로그인 세션: `parking.admin.session`
 - 사용자 목록/권한/회원가입 계정: `parking.user.profiles`
+
+## 로컬 실행
+
+```bash
+npm install
+npm run dev
+```
+
+## 배포
+- Vercel : 프론트엔드 중심 웹 서비스를 쉽게 배포·운영할 수 있게 해주는 클라우드 플랫폼
+- 웹 URL : https://jw-pms.vercel.app
