@@ -1,18 +1,17 @@
-# Vue.js 소규모 주차관리 시스템 MVP
+# Vue/React 연구회 활동
 
-Vue 3, Vite, Pinia, Vue Router로 만든 학습용 주차관리 시스템입니다. 별도 서버 없이 브라우저 `localStorage`만 사용합니다.
+Vue 3, Vite, Pinia, Vue Router로 만든 학습용 주차관리 시스템입니다. 별도 DB서버 없이 브라우저 `localStorage`만 사용합니다.
+
+## 배포
+- Vercel : 프론트엔드 중심 웹 서비스를 쉽게 배포·운영할 수 있게 해주는 클라우드 플랫폼
+- URL : https://jw-pms.vercel.app
 
 ## 실행
 
 ```bash
 npm install
-copy .env.example .env
 npm run dev
 ```
-
-기본 관리자 계정은 아래 1개입니다.
-
-- `admin@miracom-inc.com` / `admin123`
 
 ## 주요 기능
 
@@ -35,5 +34,9 @@ npm run dev
 
 - 주차 기록: `parking.records`
 - 요금/수용량 설정: `parking.settings`
+
+기본 관리자 계정은 아래 1개입니다.
+
+- `admin` / `admin123`
 - 현재 로그인 세션: `parking.admin.session`
 - 사용자 목록/권한/회원가입 계정: `parking.user.profiles`
