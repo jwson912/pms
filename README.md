@@ -1,6 +1,6 @@
 # Vue/React 연구회 활동
 
-Vue 3, Vite, Pinia, Vue Router로 만든 학습용 주차관리 시스템입니다. 별도 DB서버 없이 브라우저 `localStorage`만 사용합니다.
+Vue 3, Vite, Pinia, Vue Router로 만든 학습용 주차관리 시스템으로 별도 DB서버 없이 브라우저 `localStorage`만 사용
 
 ## 배포
 - Vercel : 프론트엔드 중심 웹 서비스를 쉽게 배포·운영할 수 있게 해주는 클라우드 플랫폼
@@ -30,13 +30,9 @@ npm run dev
 
 ## 데이터 저장 위치
 
-모든 데이터는 현재 브라우저의 `localStorage`에 저장됩니다.
+모든 데이터는 현재 브라우저의 `localStorage`에 저장
 
 - 주차 기록: `parking.records`
 - 요금/수용량 설정: `parking.settings`
-
-기본 관리자 계정은 아래 1개입니다.
-
-- `admin` / `admin123`
 - 현재 로그인 세션: `parking.admin.session`
 - 사용자 목록/권한/회원가입 계정: `parking.user.profiles`
